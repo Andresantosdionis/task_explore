@@ -178,28 +178,34 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
 echo "<ul>";
 
 foreach ($stmt->fetchAll() as $tasks) {
-    echo "<li>
+    echo "<li id='task-" . $tasks['id'] . "'>
             <a href='details.php?key=" . $tasks['id'] . "'>" . $tasks['task_name'] . "</a>
-            <button type='button' class='btn-clear1' onclick='deletar" . $tasks['id'] . "()'>Remover</button>
-            </li>
-            <script>
-                function deletar" . $tasks['id'] . "(){
-                    if(confirm('Deseja remover esta tarefa?')) {
-                        window.location.href = 'http://localhost/Task_Explorer_PCC/taske/task.php?key=" . $tasks['id'] . "';
-                    }
-                }
-            </script>";
+            <button type='button' class='btn-clear1' onclick='deletar(" . $tasks['id'] . ")'>Remover</button>
+          </li>";
 }
-
-echo "</ul>";
-
 ?>
 
-
-                <form action="" method="get" class="form-button">
-                    <input type="hidden" name="clear" value="clear">
-                    <button type="submit" class="btn-clear">Limpar Tarefas</button>
-                </form>
+<script>
+function deletar(taskId) {
+    if (confirm('Deseja remover esta tarefa?')) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "delete-todo.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.success) {
+                    var taskElement = document.getElementById('task-' + taskId);
+                    taskElement.parentNode.removeChild(taskElement);
+                } else {
+                    alert('Erro ao remover a tarefa.');
+                }
+            }
+        };
+        xhr.send("id=" + taskId);
+    }
+}
+</script>
 
             </div>
             <div class="footer">
