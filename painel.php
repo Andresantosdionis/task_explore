@@ -51,6 +51,16 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
                 </div>
             </li>
 
+            <li>
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <!--Logo do inicio-->
+                    <span class="link_name">Setting</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Setting</a></li>
+                </ul>
+            </li>
 
             <li>
                 <div class="iocn-links">
@@ -89,7 +99,7 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
     </div>
 
     <!-- FIM SIDEBAR -->
-    <section class="home-section">
+
 
         <head>
             <meta charset="UTF-8">
@@ -145,9 +155,9 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
                     <label for="task_description" class="description">Descrição:</label>
                     <input type="text" name="task_description" class="description" placeholder="Descrição da Tarefa">
                     <label for="task_data">Data:</label>
-                    <input type="date" name="task_date" class="data">
+                    <input type="date" name="task_date" class="data"  style="color:#ccc;">
                     <label for="task_image">Imagem:</label>
-                    <input type="file" name="task_image">
+                    <input type="file" name="task_image"  style="color:#ccc;">
                     <button type="submit">Cadastrar</button>
                 </form>
 
@@ -178,34 +188,28 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
 echo "<ul>";
 
 foreach ($stmt->fetchAll() as $tasks) {
-    echo "<li id='task-" . $tasks['id'] . "'>
+    echo "<li>
             <a href='details.php?key=" . $tasks['id'] . "'>" . $tasks['task_name'] . "</a>
-            <button type='button' class='btn-clear1' onclick='deletar(" . $tasks['id'] . ")'>Remover</button>
-          </li>";
+            <button type='button' class='btn-clear1' onclick='deletar" . $tasks['id'] . "()'>Remover</button>
+            </li>
+            <script>
+                function deletar" . $tasks['id'] . "(){
+                    if(confirm('Deseja remover esta tarefa?')) {
+                        window.location.href = 'http://localhost/Task_Explorer_PCC/taske/task.php?key=" . $tasks['id'] . "';
+                    }
+                }
+            </script>";
 }
+
+echo "</ul>";
+
 ?>
 
-<script>
-function deletar(taskId) {
-    if (confirm('Deseja remover esta tarefa?')) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "delete-todo.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-                if (response.success) {
-                    var taskElement = document.getElementById('task-' + taskId);
-                    taskElement.parentNode.removeChild(taskElement);
-                } else {
-                    alert('Erro ao remover a tarefa.');
-                }
-            }
-        };
-        xhr.send("id=" + taskId);
-    }
-}
-</script>
+
+                <form action="" method="get" class="form-button">
+                    <input type="hidden" name="clear" value="clear">
+                    <button type="submit" class="btn-clear">Limpar Tarefas</button>
+                </form>
 
             </div>
             <div class="footer">
@@ -214,4 +218,4 @@ function deletar(taskId) {
         </div>
 </body>
 
-</html>
+</html> 
