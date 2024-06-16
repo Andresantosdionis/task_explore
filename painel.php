@@ -145,16 +145,16 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
             ?>
 
             <div class="header">
-                <h1>CRIE SUAS TAREFAS</h1>
+                <h1>CRIE SEUS QUADROS</h1>
             </div>
             <div class="form">
                 <form action="task.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="insert" value="insert">
-                    <label for="task_name">Tarefa:</label>
-                    <input type="text" name="task_name" placeholder="Nome da Tarefa" require>
+                    <label for="task_name">Quadro:</label>
+                    <input type="text" name="task_name" placeholder="Nome do Quadro" require>
                     <label for="task_description" class="description">Descrição:</label>
-                    <input type="text" name="task_description" class="description" placeholder="Descrição da Tarefa">
-                    <label for="task_data">Data:</label>
+                    <input type="text" name="task_description" class="description" placeholder="Descrição do Quadro">
+                    <label for="task_data">Data de encerramento:</label>
                     <input type="date" name="task_date" class="data"  style="color:#ccc;">
                     <label for="task_image">Imagem:</label>
                     <input type="file" name="task_image"  style="color:#ccc;">
@@ -180,7 +180,7 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
         </div>
         <div class="container">
-            <h2 class="tarefas">TAREFAS</h2>
+            <h2 class="tarefas">Quadros</h2>
             <div class="list-tasks">
 
                 <?php
@@ -204,16 +204,9 @@ foreach ($stmt->fetchAll() as $tasks) {
 echo "</ul>";
 
 ?>
-
-
-                <form action="" method="get" class="form-button">
-                    <input type="hidden" name="clear" value="clear">
-                    <button type="submit" class="btn-clear">Limpar Tarefas</button>
-                </form>
-
             </div>
             <div class="footer">
-                <p>Gerenciamento Task Explore</p>
+                <p>Gerenciamento Task Explorer</p>
             </div>
         </div>
 </body>
