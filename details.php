@@ -1,4 +1,4 @@
-<?php
+x'<?php
 
 session_start();
 
@@ -171,16 +171,25 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
         body {
-            background: #140b30;
+            background: #1a0f3d ;
+        }
+
+        html{
+            background: #1a0f3d;
+        }
+
+        .box{
+            background: #1a0f3d ;
         }
 
         .main {
+            background:#1a0f3d ;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-
+            margin-left:300px;
         }
 
 
@@ -252,6 +261,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             color: red;
         }
         </style>
+
         </head>
     </div>
     <div class="box">
