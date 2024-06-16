@@ -410,6 +410,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             this.style.display = "block";
         }, 0);
         console.log("dragEnd");
+        let elemento = document.getElementById('listID');
     }
 
     all_status.forEach((status) => {
