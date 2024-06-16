@@ -42,69 +42,35 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <ul class="nav-links">
             <li>
-                <a href="#">
-                    <i class='bx bxs-grid-alt'></i>
-                    <!--Logo do inicio-->
-                    <span class="link_name">Dashboard</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Category</a></li>
-
-                </ul>
-            </li>
-            <li>
                 <div class="iocn-links">
                     <a class="link_as_button" href="precos.html">
                         <i class='bx bx-collection'></i>
                         <!--Logo do inicio-->
                         <span class="link_name">Preços</span>
                     </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
                 </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Planos</a></li>
-                    <li><a href="#">Gratuito</a></li>
-                    <li><a href="#">Pro</a></li>
-                    <li><a href="#">Empresa</a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="iocn-links">
-                    <a href="#">
-                        <i class='bx bx-book-alt'></i>
-                        <!--Logo-->
-                        <span class="link_name">Posts</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Posts</a></li>
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">Login Form</a></li>
-                    <li><a href="#">Card Design</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">
-                    <i class='bx bx-pie-chart-alt-2'></i>
-                    <!--Logo do inicio-->
-                    <span class="link_name">Analytics</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Analytics</a></li>
-                </ul>
             </li>
 
             <li>
-                <a href="#">
-                    <i class='bx bx-cog'></i>
-                    <!--Logo do inicio-->
-                    <span class="link_name">Setting</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Setting</a></li>
-                </ul>
+                <div class="iocn-links">
+                    <a class="link_as_button" href="homepage.html">
+                        <i class='bx bxs-home'></i>
+                        <!--Logo do inicio-->
+                        <span class="link_name">Home</span>
+                    </a>
+                </div>
             </li>
+
+            <li>
+                <div class="iocn-links">
+                    <a class="link_as_button" href="suporte.html">
+                        <i class='bx bx-help-circle'></i>
+                        <!--Logo do inicio-->
+                        <span class="link_name">Suporte</span>
+                    </a>
+                </div>
+            </li>
+
             <li>
                 <div class="profile-details">
                     <div class="nome">
