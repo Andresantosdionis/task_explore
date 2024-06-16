@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $list = $_POST['list'];
 
         try {
-            $stmt = $conn->prepare("INSERT INTO tbl_list (list) VALUES (:list)");
+            $stmt = $conn->prepare("INSERT INTO tbl_list (list, painel) VALUES (:list, 0)");
 
             $stmt->bindParam(":list", $list, PDO::PARAM_STR);
 
