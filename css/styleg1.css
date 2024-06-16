@@ -9,7 +9,8 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: #ccc;
+  background-image: linear-gradient(#9bde9b,#ccc);
+  height: 1400px;
   /*background-image: url(../img/espaço.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -33,10 +34,11 @@ a:hover {
 }
 
 .container {
-  background: #140b30;
+  background:#140b30;
   max-width: 800px;
   border-radius: 10px;
   border: 3px solid #f0f0f5;
+  margin-left: 415px;
 }
 
 /*deixa a div transparente
@@ -90,7 +92,7 @@ a:hover {
 
 .form input {
   height: 32px;
-  width: 40%;
+  width: 100%;
   margin-top: 4px;
   margin-bottom: 4px;
   padding-left: 12px;
@@ -240,7 +242,7 @@ a:hover {
   height: 550px;
   border-radius: 20px;
   margin-top: 5%;
-  margin-left: auto;
+  margin-left: 370px;
   margin-right: auto;
   padding: 12px;
   border: 7px solid #ccc;
@@ -308,13 +310,21 @@ a:hover {
   height: auto;
 }
 
+.logo-voltar{
+  background: #1a0f3d;
+}
+
+.logo-voltar a{
+  background: #1a0f3d;
+}
+
 .btn-voltar {
   background: #ef5350;
   border: none;
   color: #fff;
   padding: 12px 12px;
   border-radius: 8px;
-  margin-left: 1300px;
+  margin-left: 1180px;
   margin-top: 10px;
   cursor: pointer;
   transform: background 0.3s;
