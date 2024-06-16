@@ -295,7 +295,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $result = $stmt->fetchAll();
                 
             ?>
-            <form action="tarefa-save.php">
+            
                 <div class="todo-container">
                     <div class="status" id="no_status">
                         <h2 style="background: #1caf1c;">A Fazer</h2>
@@ -365,7 +365,7 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
                 <button type="submit">Salvar</button>
-            </form>
+        
 
             <div id="overlay"></div>
 
