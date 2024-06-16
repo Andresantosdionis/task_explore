@@ -52,17 +52,6 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
             </li>
 
             <li>
-                <a href="#">
-                    <i class='bx bx-cog'></i>
-                    <!--Logo do inicio-->
-                    <span class="link_name">Setting</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Setting</a></li>
-                </ul>
-            </li>
-
-            <li>
                 <div class="iocn-links">
                     <a class="link_as_button" href="homepage.html">
                         <i class='bx bxs-home'></i>
