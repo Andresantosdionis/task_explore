@@ -82,11 +82,15 @@ html {
 
 .h2-content {
   padding: 30px 20px;
+  font-size: xx-large;
+  margin-left: 6cm; /*Deixe assim*/
+  margin-right: 2cm;/*Deixe assim*/
 }
 
 .main_content_left,
 p {
   padding: 0 40px;
+  font-size: larger;
 }
 
 .main_content_left .image {
@@ -100,15 +104,23 @@ p {
   padding: 30px 30px;
 }
 
+.main_content_right p {
+  font-size: x-large;
+  text-align: left;
+}
 .content-h2 {
   display: flex;
   padding: 30px 20px;
 }
 
 .h2-left {
-  margin-left: 220px;
+  margin-left: 9cm; /*Deixe assim*/
+  margin-right: 2cm;/*Deixe assim*/
+  font-size: xx-large;
 }
 
 .h2-right {
-  margin-right: 200px;
+  margin-right: 200px;/*Deixe assim*/
+  margin-left: 8cm;/*Deixe assim*/
+  font-size: xx-large;
 }
