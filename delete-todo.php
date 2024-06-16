@@ -1,17 +1,36 @@
 <?php
+include ('conn.php');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['id'];
-    
-    // Conexão com o banco de dados (ajuste conforme necessário)
-    $pdo = new PDO('mysql:host=localhost;dbname=db_task_explorer', 'root', '');
-    
-    // Preparar e executar a query de deleção
-    $stmt = $pdo->prepare('DELETE FROM tasks WHERE id = :id');
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    $success = $stmt->execute();
-    
-    // Retornar uma resposta JSON
-    echo json_encode(['success' => $success]);
+if (isset($_GET['list'])) {
+    $list = $_GET['list'];
+
+    try {
+
+        $query = "DELETE FROM tbl_list WHERE id = '$list'";
+
+        $stmt = $conn->prepare($query);
+
+        $query_execute = $stmt->execute();
+
+        if ($query_execute) {
+            echo "
+            <script>
+            alert('tarefa deletada com sucesso!');
+            history.back(); 
+        </script>
+            ";
+        } else {
+            echo "
+                <script>
+                    alert('Erro ao deletar tarefa!');
+                    history.back();
+                </script>
+            ";
+        }
+
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
 }
+
 ?>
