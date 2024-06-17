@@ -97,7 +97,7 @@
 /*INICIO SESSÃO DE ARTIGOS*/
 .main_blog {
   max-width: calc(1300px - 40px);
-  padding: 0 20px;
+ 
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -293,6 +293,9 @@
 /* Rodape2 */
 .rodape {
   background-color: #fff;
+  align-items: center;
+  text-align: center;
+  margin-left:300px;
 }
 /* fim Rodape2 */
 
