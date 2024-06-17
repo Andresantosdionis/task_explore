@@ -24,21 +24,11 @@ CREATE TABLE `tasks` (
 
 CREATE TABLE `tbl_list` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `nome` VARCHAR(45),
     `list` VARCHAR(255) NOT NULL,
     `painel` INT,
     `id_task` INT,
     FOREIGN KEY (`id_task`) REFERENCES `tasks` (`id`)
   );
-
-CREATE TABLE `cartoes` (
-  `id_cartao` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `titulo` VARCHAR(45) NOT NULL,
-  `descricao` VARCHAR(500),
-  `nivel_prioridade` ENUM('ALTA', 'MÉDIA', 'BAIXA'),
-  `id_lista` INT NOT NULL,
-  FOREIGN KEY (`id_lista`) REFERENCES `tbl_list` (`id`)
-);
 
 INSERT INTO `usuarios` (id_usuario, email, senha, nome, tipo_usuario) VALUES (1, 'admin@email.com', '123456', 'Admin', 'Administrador');
 INSERT INTO `usuarios` (id_usuario, email, senha, nome, tipo_usuario) VALUES (2, 'user01@email.com', '123456', 'User01', 'Usuário');
