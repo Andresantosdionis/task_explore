@@ -41,15 +41,6 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <span class="logo_name">Task Explorer</span>
         </div>
         <ul class="nav-links">
-            <li>
-                <div class="iocn-links">
-                    <a class="link_as_button" href="precos.html">
-                        <i class='bx bx-collection'></i>
-                        <!--Logo do inicio-->
-                        <span class="link_name">Preços</span>
-                    </a>
-                </div>
-            </li>
 
             <li>
                 <div class="iocn-links">
