@@ -272,74 +272,70 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 
             ?>
             
-                <div class="todo-container">
-                    <div class="status" id="no_status">
-                        <h2 style="background: #1caf1c;">A Fazer</h2>
-                        <button class="btn btn-dark form-control" data-toggle="modal" data-target="#addListModal">Adicionar
-                            tarefas</button>
-                        <!-- <div class="todo" draggable="true">
-                            <span style="background: #fff;">Front-end</span>
-                            <span class="close">&times;</span>
-                        </div> -->
-                
-                        <?php foreach ($result as $row) :?>
-                            <div class="todo" draggable="true">
-                                <?php if ( $row['painel'] == '0'): ?>
-                                    <div class="todo" draggable="true">
-                                        <input type="hidden" id="listId-<?= $row['id'] ?>" value="<?=  $row['list'] ?>">
-                                        <span style="background: #fff;" id="list-<?=  $row['id'] ?>">
-                                            <?= $row['list'] . ' - '. $row['painel'] ?>
-                                        </span>
-                                        <span class="close" onclick="deleteList(<?=  $row['id'] ?>)">&times;</span>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                
-                    <div class="status">
-                        <h2 style="background: #1caf1c;">Fazendo</h2>
-                        <?php foreach ($result as $row) :?>
-                        <?php if ( $row['painel'] == '1'): ?>
-                                    <div class="todo" draggable="true">
-                                        <input type="hidden" id="listId-<?= $row['id'] ?>" value="<?=  $row['list'] ?>">
-                                        <span style="background: #fff;" id="list-<?=  $row['id'] ?>">
-                                            <?= $row['list'] . ' - '. $row['painel'] ?>
-                                        </span>
-                                        <span class="close" onclick="deleteList(<?=  $row['id'] ?>)">&times;</span>
-                                    </div>
-                                <?php endif; ?>
-                                <?php endforeach; ?>
-                    </div>
-                    <div class="status">
-                        <h2 style="background: #1caf1c;">Em Teste</h2>
-                        <?php foreach ($result as $row) :?>
-                        <?php if ( $row['painel'] == '2'): ?>
-                                    <div class="todo" draggable="true">
-                                        <input type="hidden" id="listId-<?= $row['id'] ?>" value="<?=  $row['list'] ?>">
-                                        <span style="background: #fff;" id="list-<?=  $row['id'] ?>">
-                                            <?= $row['list'] . ' - '. $row['painel'] ?>
-                                        </span>
-                                        <span class="close" onclick="deleteList(<?=  $row['id'] ?>)">&times;</span>
-                                    </div>
-                        <?php endif; ?>
-                        <?php endforeach; ?>
-                    </div>
-                    <div class="status ">
-                        <h2 style="background: #1caf1c;">Concluído</h2>
-                        <?php foreach ($result as $row) :?>
-                        <?php if ( $row['painel'] == '3'): ?>
-                                    <div class="todo" draggable="true">
-                                        <input type="hidden" id="listId-<?= $row['id'] ?>" value="<?=  $row['list'] ?>">
-                                        <span style="background: #fff;" id="list-<?=  $row['id'] ?>">
-                                            <?= $row['list'] . ' - '. $row['painel'] ?>
-                                        </span>
-                                        <span class="close" onclick="deleteList(<?=  $row['id'] ?>)">&times;</span>
-                                    </div>
-                        <?php endif; ?>
-                        <?php endforeach; ?>
-                    </div>
+            <div class="todo-container">
+    <div class="status" id="status-0" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2 style="background: #1caf1c;">A Fazer</h2>
+        <button class="btn btn-dark form-control" data-toggle="modal" data-target="#addListModal">Adicionar tarefas</button>
+
+        <?php foreach ($result as $row) : ?>
+            <?php if ($row['painel'] == '0'): ?>
+                <div class="todo" draggable="true" ondragstart="drag(event)" id="todo-<?= $row['id'] ?>">
+                    <input type="hidden" id="listId-<?= $row['id'] ?>" value="<?= $row['list'] ?>">
+                    <span style="background: #fff;" id="list-<?= $row['id'] ?>">
+                        <?= $row['list'] . ' - ' . $row['painel'] ?>
+                    </span>
+                    <span class="close" onclick="deleteList(<?= $row['id'] ?>)">&times;</span>
                 </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+
+    <div class="status" id="status-1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2 style="background: #1caf1c;">Fazendo</h2>
+        <?php foreach ($result as $row) : ?>
+            <?php if ($row['painel'] == '1'): ?>
+                <div class="todo" draggable="true" ondragstart="drag(event)" id="todo-<?= $row['id'] ?>">
+                    <input type="hidden" id="listId-<?= $row['id'] ?>" value="<?= $row['list'] ?>">
+                    <span style="background: #fff;" id="list-<?= $row['id'] ?>">
+                        <?= $row['list'] . ' - ' . $row['painel'] ?>
+                    </span>
+                    <span class="close" onclick="deleteList(<?= $row['id'] ?>)">&times;</span>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+
+    <div class="status" id="status-2" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2 style="background: #1caf1c;">Em Teste</h2>
+        <?php foreach ($result as $row) : ?>
+            <?php if ($row['painel'] == '2'): ?>
+                <div class="todo" draggable="true" ondragstart="drag(event)" id="todo-<?= $row['id'] ?>">
+                    <input type="hidden" id="listId-<?= $row['id'] ?>" value="<?= $row['list'] ?>">
+                    <span style="background: #fff;" id="list-<?= $row['id'] ?>">
+                        <?= $row['list'] . ' - ' . $row['painel'] ?>
+                    </span>
+                    <span class="close" onclick="deleteList(<?= $row['id'] ?>)">&times;</span>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+
+    <div class="status" id="status-3" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h2 style="background: #1caf1c;">Concluído</h2>
+        <?php foreach ($result as $row) : ?>
+            <?php if ($row['painel'] == '3'): ?>
+                <div class="todo" draggable="true" ondragstart="drag(event)" id="todo-<?= $row['id'] ?>">
+                    <input type="hidden" id="listId-<?= $row['id'] ?>" value="<?= $row['list'] ?>">
+                    <span style="background: #fff;" id="list-<?= $row['id'] ?>">
+                        <?= $row['list'] . ' - ' . $row['painel'] ?>
+                    </span>
+                    <span class="close" onclick="deleteList(<?= $row['id'] ?>)">&times;</span>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>
+
                 <button type="submit">Salvar</button>
         
 
@@ -412,6 +408,41 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     }
     </script>
+
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    var element = document.getElementById(data);
+    ev.target.appendChild(element);
+
+    // Atualizar no banco de dados
+    var listId = element.id.split('-')[1];
+    var painel = ev.target.id.split('-')[1];
+
+    updateListPainel(listId, painel);
+}
+
+function updateListPainel(listId, painel) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "update_painel.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
+        }
+    };
+    xhr.send("id=" + listId + "&painel=" + painel);
+}
+</script>
 
 </body>
 
