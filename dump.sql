@@ -59,6 +59,16 @@ ALTER TABLE `tbl_list`
   ADD UNIQUE KEY `id_tarefa_UNIQUE` (`id`),
   ADD KEY `id_tasks_list_idx` (`id_task`);
 
+ALTER TABLE `tbl_list` 
+DROP FOREIGN KEY `id_tasks_list`;
+
+ALTER TABLE `tbl_list`
+ADD CONSTRAINT `id_tasks_list`
+FOREIGN KEY (`id_tasks_list`)
+REFERENCES `tasks` (`id`)
+ON DELETE CASCADE
+ON UPDATE NO ACTION;
+
 
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
