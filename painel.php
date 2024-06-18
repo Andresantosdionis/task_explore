@@ -167,22 +167,18 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
 echo "<ul>";
 
-foreach ($stmt->fetchAll() as $tasks) {
+
+$query = 'SELECT id, task_name FROM tasks';
+$stmt = $conn->prepare($query);
+$stmt->execute();
+
+foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $task) {
     echo "<li>
-            <a href='details.php?key=" . $tasks['id'] . "'>" . $tasks['task_name'] . "</a>
-            <button type='button' class='btn-clear1' onclick='deletar" . $tasks['id'] . "()'>Remover</button>
-            </li>
-            <script>
-                function deletar" . $tasks['id'] . "(){
-                    if(confirm('Deseja remover esta tarefa?')) {
-                        window.location.href = 'http://localhost/Task_Explorer_PCC/taske/task.php?key=" . $tasks['id'] . "';
-                    }
-                }
-            </script>";
+            <a href='details.php?key=" . $task['id'] . "'>" . $task['task_name'] . "</a>
+            <button type='button' class='btn-clear1' data-id='" . $task['id'] . "' data-name='" . $task['task_name'] . "'>Remover</button>
+          </li>";
 }
-
 echo "</ul>";
-
 ?>
             </div>
             <div class="footer">
@@ -190,5 +186,33 @@ echo "</ul>";
             </div>
         </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('.btn-clear1').click(function(){
+            var taskId = $(this).data('id');
+            var taskName = $(this).data('name');
+            if(confirm('Deseja remover a tarefa "' + taskName + '"?')) {
+                $.ajax({
+                    url: 'delete_task.php',
+                    type: 'POST',
+                    data: { id: taskId },
+                    success: function(response) {
+                        if(response == 'success') {
+                            alert('Tarefa removida com sucesso.');
+                            location.reload();
+                        } else {
+                            alert('Falha ao remover a tarefa.');
+                        }
+                    },
+                    error: function() {
+                        alert('Erro na comunicação com o servidor.');
+                    }
+                });
+            }
+        });
+    });
+    </script>
+
 
 </html> 
