@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Estrutura para tabela `tasks`
 --
+CREATE DATABASE db_task_explorer;
+USE db_task_explorer;
 
 CREATE TABLE `tasks` (
   `id` int(11) NOT NULL,
