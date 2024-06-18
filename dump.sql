@@ -17,15 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Banco de dados: `db_task_explorer`
---
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `tasks`
---
+DROP DATABASE IF EXISTS db_task_explorer;
 CREATE DATABASE db_task_explorer;
 USE db_task_explorer;
 
@@ -38,16 +30,6 @@ CREATE TABLE `tasks` (
   `id_usuario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Despejando dados para a tabela `tasks`
---
-
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `tbl_list`
---
 
 CREATE TABLE `tbl_list` (
   `id` int(11) NOT NULL,
@@ -57,18 +39,6 @@ CREATE TABLE `tbl_list` (
   `id_task` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Despejando dados para a tabela `tbl_list`
---
-
-INSERT INTO `tbl_list` (`id`, `nome`, `list`, `painel`, `id_task`) VALUES
-(9, NULL, 'tarefa', 0, 18);
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `usuarios`
---
 
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
@@ -78,77 +48,41 @@ CREATE TABLE `usuarios` (
   `tipo_usuario` enum('usuário','Administrador') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Despejando dados para a tabela `usuarios`
---
 
-
---
--- Índices para tabelas despejadas
---
-
---
--- Índices de tabela `tasks`
---
 ALTER TABLE `tasks`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id_tasks_UNIQUE` (`id`),
   ADD KEY `id_usuario_tasks_idx` (`id_usuario`);
 
---
--- Índices de tabela `tbl_list`
---
 ALTER TABLE `tbl_list`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id_tarefa_UNIQUE` (`id`),
   ADD KEY `id_tasks_list_idx` (`id_task`);
 
---
--- Índices de tabela `usuarios`
---
+
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `id_usuario_UNIQUE` (`id_usuario`);
 
---
--- AUTO_INCREMENT para tabelas despejadas
---
 
---
--- AUTO_INCREMENT de tabela `tasks`
---
 ALTER TABLE `tasks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
---
--- AUTO_INCREMENT de tabela `tbl_list`
---
+
 ALTER TABLE `tbl_list`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
---
--- AUTO_INCREMENT de tabela `usuarios`
---
+
 ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
---
--- Restrições para tabelas despejadas
---
 
---
--- Restrições para tabelas `tasks`
---
 ALTER TABLE `tasks`
   ADD CONSTRAINT `id_usuario_tasks` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Restrições para tabelas `tbl_list`
---
 ALTER TABLE `tbl_list`
   ADD CONSTRAINT `id_tasks_list` FOREIGN KEY (`id_task`) REFERENCES `tasks` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
