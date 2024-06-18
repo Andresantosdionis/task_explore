@@ -65,7 +65,7 @@ $usuarios = listarUsuarios();
         <label for="senha">Senha:</label>
         <input type="password" id="senha" name="senha" required placeholder="Insira a senha">
         <label for="tipo_usuario">Tipo de Usuário:</label>
-        <select id="tipo_usuario" name="tipo_usuario" required style="background:#301e64; color:#ccc; height: 25px; border-radius: 3px;">
+        <select id="tipo_usuario" name="tipo_usuario" required style="background:#301e64; color:#ccc; height: 30px; border-radius: 3px;">
             <option value="Usuário" style="color:#ccc;">Usuário</option>
             <option value="Administrador" style="color:#ccc;">Administrador</option>
         </select>
