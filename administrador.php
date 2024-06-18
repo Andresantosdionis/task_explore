@@ -36,7 +36,7 @@ $usuarios = listarUsuarios();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Usuários</title>
-    <link rel="stylesheet" href="administrador.css">
+    <link rel="stylesheet" href="css/administrador.css">
     <style>
         table {
             width: 100%;
