@@ -4,11 +4,34 @@ include ("conn.php");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['list'])) {
         $list = $_POST['list'];
+        
+        $stmt = $conn->prepare('SELECT id as id_task FROM `tasks` WHERE 1 = 1 ORDER BY id DESC LIMIT 1');
 
         try {
-            $stmt = $conn->prepare("INSERT INTO tbl_list (list, painel) VALUES (:list, 0)");
+            // Preparando a consulta SQL
+            $stmt = $conn->prepare('SELECT id as id_task FROM `tasks` WHERE 1 = 1 ORDER BY id DESC LIMIT 1');
+        
+            // Executando a consulta
+            $stmt->execute();
+        
+            // Definindo o modo de recuperação para array associativo
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        
+            // Obtendo o resultado da consulta
+            $row = $stmt->fetch();
+        
+            $id_task = $row['id_task'];
+        
+        } catch (PDOException $e) {
+            // Em caso de erro, capturamos a exceção
+            echo "Erro ao executar a consulta: " . $e->getMessage();
+        }
+
+        try {
+            $stmt = $conn->prepare("INSERT INTO tbl_list (list, painel, id_task) VALUES (:list, 0, :task)");
 
             $stmt->bindParam(":list", $list, PDO::PARAM_STR);
+            $stmt->bindParam(':task', $id_task);
 
             $stmt->execute();
 
