@@ -21,14 +21,16 @@ DROP DATABASE IF EXISTS db_task_explorer;
 CREATE DATABASE db_task_explorer;
 USE db_task_explorer;
 
+
 CREATE TABLE `tasks` (
-  `id` int(11) NOT NULL,
-  `task_name` varchar(190) DEFAULT NULL,
-  `task_description` varchar(250) DEFAULT NULL,
-  `task_image` varchar(50) DEFAULT NULL,
-  `task_date` date DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `task_name` VARCHAR(190),
+  `task_description` VARCHAR(250),
+  `task_image` VARCHAR(50),
+  `task_date` DATE,
+  `id_usuario` INT,
+  FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+);
 
 
 CREATE TABLE `tbl_list` (
