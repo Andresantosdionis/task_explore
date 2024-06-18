@@ -82,12 +82,6 @@ CREATE TABLE `usuarios` (
 -- Despejando dados para a tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nome`, `senha`, `email`, `tipo_usuario`) VALUES
-(1, 'Erick', '123', 'erick.oliveira3698@gmail.com', 'usuário'),
-(2, 'Bernardo', '123', 'bernardo.windows7@gmail.com', 'usuário'),
-(3, 'Alessandra', '123', 'alessandra.doce@gmail.com', 'usuário'),
-(4, 'Daniel', '123', 'daniel@gmail.com', 'usuário'),
-(5, 'Evellyn', '123', 'evellyn@gmail.com', 'usuário');
 
 --
 -- Índices para tabelas despejadas
